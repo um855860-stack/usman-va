@@ -4,760 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malik M. Usman | Professional Amazon Virtual Assistant</title>
+    <meta name="description" content="Practical Amazon store support for product research, listing optimization, PPC and Seller Central operations. Clear updates and thoughtful next steps for your business.">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://usman-malik.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usman-malik.vercel.app/">
+    <meta property="og:title" content="Malik M. Usman | Professional Amazon Virtual Assistant">
+    <meta property="og:description" content="Practical Amazon store support for product research, listing optimization, PPC and Seller Central operations.">
+    <meta property="og:image" content="https://usman-malik.vercel.app/assets/images/profile-1080.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Malik M. Usman | Professional Amazon Virtual Assistant">
+    <meta name="twitter:description" content="Practical Amazon store support for product research, listing optimization, PPC and Seller Central operations.">
+    <meta name="twitter:image" content="https://usman-malik.vercel.app/assets/images/profile-1080.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/jpeg" href="./favicon.jpg">
-    <style>
-        :root {
-            --primary-dark: #0f172a;
-            --card-bg: #1e293b;
-            --accent-gold: #ff9900;
-            --accent-hover: #e68a00;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--primary-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.3rem;
-            color: var(--text-light);
-        }
-
-        .logo span {
-            color: var(--accent-gold);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            padding: 125px 0 70px;
-            background: radial-gradient(circle at top, rgba(255, 153, 0, 0.15), transparent 60%);
-        }
-
-        .hero-section .container {
-            display: grid;
-            grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.5fr);
-            align-items: center;
-            gap: 55px;
-        }
-
-        .hero-content {
-            max-width: 680px;
-        }
-
-        .profile-wrapper {
-            position: relative;
-            display: inline-block;
-            isolation: isolate;
-            justify-self: center;
-            padding: 12px;
-        }
-
-        .profile-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -18px;
-            z-index: -2;
-            border-radius: 28%;
-            background: conic-gradient(from 45deg, transparent 0 18%, rgba(255, 153, 0, 0.7), transparent 38% 68%, rgba(255, 196, 92, 0.45), transparent 84%);
-            filter: blur(18px);
-            animation: profileGlow 7s linear infinite;
-        }
-
-        .profile-frame {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            overflow: hidden;
-            border: 3px solid var(--accent-gold);
-            border-radius: 15%;
-            box-shadow: 0 0 25px rgba(255, 153, 0, 0.3), 0 0 70px rgba(255, 153, 0, 0.12);
-            animation: profileFloat 6s ease-in-out infinite;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: #22c55e;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            border: 3px solid var(--primary-dark);
-        }
-
-        .hero-section h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .hero-kicker {
-            display: block;
-            margin-bottom: 12px;
-            color: var(--accent-gold);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .hero-section h2 {
-            font-size: 1.25rem;
-            color: var(--accent-gold);
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .hero-section p {
-            max-width: 650px;
-            margin: 0 0 25px;
-            color: var(--text-muted);
-            font-size: 1.05rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--accent-gold);
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 153, 0, 0.2);
-        }
-
-        [data-tooltip] {
-            position: relative;
-        }
-
-        [data-tooltip]::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            left: 50%;
-            bottom: calc(100% + 10px);
-            z-index: 10;
-            width: max-content;
-            max-width: 220px;
-            padding: 7px 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: #111c31;
-            color: var(--text-light);
-            font-size: 0.75rem;
-            font-weight: 500;
-            line-height: 1.35;
-            opacity: 0;
-            pointer-events: none;
-            transform: translate(-50%, 4px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-
-        [data-tooltip]:hover::after,
-        [data-tooltip]:focus-visible::after {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
-
-        /* Section Layouts */
-        section {
-            padding: 32px 0;
-        }
-
-        .section-header {
-            margin-bottom: 22px;
-        }
-
-        .section-header h2 {
-            font-size: 1.65rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-gold);
-            border-radius: 2px;
-        }
-
-        /* Cards & Grids */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px 25px;
-            border-radius: 12px;
-            transition: 0.3s ease;
-            animation: sectionRise 0.7s both;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-gold);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .about-layout,
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 36px;
-            align-items: start;
-        }
-
-        .about-copy {
-            max-width: 680px;
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        .about-copy p + p {
-            margin-top: 14px;
-        }
-
-        .trust-note {
-            padding: 22px;
-            border-left: 3px solid var(--accent-gold);
-            background: rgba(30, 41, 59, 0.55);
-            color: var(--text-muted);
-        }
-
-        .trust-note strong {
-            display: block;
-            margin-bottom: 7px;
-            color: var(--text-light);
-        }
-
-        .process-grid,
-        .detail-grid,
-        .engagement-grid,
-        .metrics-grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        .process-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .process-step,
-        .detail-card,
-        .engagement-card,
-        .metric-card {
-            padding: 22px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            background: var(--card-bg);
-        }
-
-        .process-step {
-            position: relative;
-        }
-
-        .step-number {
-            display: block;
-            margin-bottom: 14px;
-            color: var(--accent-gold);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-        }
-
-        .process-step h3,
-        .detail-card h3,
-        .engagement-card h3,
-        .metric-card h3 {
-            margin-bottom: 8px;
-            font-size: 1.05rem;
-        }
-
-        .process-step p,
-        .detail-card p,
-        .engagement-card p,
-        .metric-card p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-        }
-
-        .detail-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .detail-card ul {
-            margin-top: 14px;
-            padding-left: 18px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .detail-card li + li {
-            margin-top: 6px;
-        }
-
-        .engagement-grid,
-        .metrics-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .metric-card {
-            border-top: 3px solid var(--accent-gold);
-        }
-
-        .metric-card strong {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--accent-gold);
-            font-size: 1.05rem;
-        }
-
-        /* Tech Stack Table / Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .skill-box i {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-        }
-
-        /* FAQ */
-        .faq-list {
-            display: grid;
-            gap: 10px;
-            max-width: 850px;
-        }
-
-        .faq-item {
-            background: rgba(30, 41, 59, 0.72);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            transition: border-color 0.3s ease, background-color 0.3s ease;
-        }
-
-        .faq-item[open],
-        .faq-item:hover {
-            border-color: rgba(255, 153, 0, 0.55);
-            background: var(--card-bg);
-        }
-
-        .faq-item summary {
-            cursor: pointer;
-            list-style: none;
-            padding: 18px 22px;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-
-        .faq-item summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .faq-item summary::after {
-            content: '+';
-            float: right;
-            color: var(--accent-gold);
-            font-size: 1.3rem;
-            line-height: 1;
-        }
-
-        .faq-item[open] summary::after {
-            content: '\2212';
-        }
-
-        .faq-answer {
-            padding: 0 22px 18px;
-            max-width: 760px;
-            color: var(--text-muted);
-        }
-
-        /* Contact Section */
-        .contact-container {
-            background: linear-gradient(135deg, #102d53 0%, #0f172a 52%, #082f36 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 18px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: minmax(245px, 0.72fr) minmax(0, 1.28fr);
-            gap: 30px;
-            overflow: hidden;
-        }
-
-        .contact-intro {
-            padding: 18px 8px 18px 4px;
-        }
-
-        .contact-intro h3,
-        .consultation-panel h3 {
-            margin-bottom: 10px;
-            font-size: 1.35rem;
-        }
-
-        .contact-intro > p,
-        .consultation-panel > p {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-        }
-
-        .contact-channels {
-            display: grid;
-            gap: 14px;
-            margin-top: 26px;
-        }
-
-        .contact-channel {
-            display: grid;
-            grid-template-columns: 32px 1fr;
-            gap: 11px;
-            align-items: center;
-        }
-
-        .channel-icon {
-            width: 32px;
-            height: 32px;
-            display: grid;
-            place-items: center;
-            border-radius: 8px;
-            background: rgba(255, 153, 0, 0.12);
-            color: var(--accent-gold);
-        }
-
-        .contact-channel strong,
-        .contact-channel a {
-            display: block;
-            color: var(--text-light);
-            font-size: 0.78rem;
-        }
-
-        .contact-channel a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 400;
-        }
-        
-        .contact-channel span:not(.channel-icon) {
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
-
-        .contact-channel a:hover {
-            color: var(--accent-gold);
-        }
-
-        .consultation-panel {
-            padding: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.11);
-            border-radius: 13px;
-            background: rgba(5, 20, 34, 0.58);
-        }
-
-        .inquiry-form {
-            display: grid;
-            gap: 12px;
-            margin-top: 22px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-
-        .inquiry-form label {
-            display: block;
-            color: var(--text-light);
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .required-mark {
-            color: var(--accent-gold);
-        }
-
-        .inquiry-form input,
-        .inquiry-form select,
-        .inquiry-form textarea {
-            display: block;
-            width: 100%;
-            margin-top: 6px;
-            border: 1px solid var(--border-color);
-            border-radius: 9px;
-            padding: 12px;
-            background: rgba(6, 24, 39, 0.84);
-            color: var(--text-light);
-            font: inherit;
-            font-size: 0.86rem;
-        }
-
-        .inquiry-form textarea {
-            min-height: 108px;
-            resize: vertical;
-        }
-
-        .inquiry-form .btn {
-            justify-content: center;
-            width: 100%;
-            border: 0;
-            cursor: pointer;
-        }
-
-        .form-note {
-            color: var(--text-muted);
-            font-size: 0.68rem;
-        }
-
-        .inquiry-form input:focus,
-        .inquiry-form select:focus,
-        .inquiry-form textarea:focus {
-            outline: 2px solid rgba(255, 153, 0, 0.45);
-            outline-offset: 1px;
-            border-color: var(--accent-gold);
-        }
-
-        .form-status {
-            min-height: 1.3em;
-            color: #86efac;
-            font-size: 0.85rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .contact-item i {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 153, 0, 0.1);
-            color: var(--accent-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .contact-item a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25d366;
-            color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            z-index: 999;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        @keyframes profileGlow {
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes profileFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        @keyframes sectionRise {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-section {
-                padding: 110px 0 55px;
-                text-align: center;
-            }
-            .hero-section .container {
-                display: block;
-            }
-            .hero-content {
-                margin: 0 auto;
-            }
-            .profile-wrapper {
-                margin-bottom: 18px;
-            }
-            .hero-section h1 { font-size: 2.2rem; }
-            .hero-section p { margin-right: auto; margin-left: auto; }
-        }
-
-        @media (max-width: 768px) {
-            .contact-container { grid-template-columns: 1fr; }
-            .about-layout,
-            .contact-layout { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: repeat(2, 1fr); }
-            .engagement-grid,
-            .metrics-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-        }
-
-        @media (max-width: 520px) {
-            .detail-grid,
-            .process-grid,
-            .form-row { grid-template-columns: 1fr; }
-            .contact-container { padding: 24px; }
-            .consultation-panel { padding: 18px; }
-        }
-    </style>
+    <link rel="icon" href="./assets/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/jpeg" href="./assets/images/favicon.jpg">
+    <link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
 
     <nav>
         <div class="container nav-container">
-            <div class="logo">Malik<span>.VA</span></div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -766,25 +38,34 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="logo" aria-label="Rotating service slogans" aria-live="off">
+                <span class="nav-slogan">Smart growth. Steady support.</span>
+            </div>
         </div>
     </nav>
 
     <header class="hero-section" id="about">
         <div class="container">
+            <div class="hero-content">
+                <span class="hero-kicker">Amazon seller growth partner</span>
+                <h1>Malik M.<span class="hero-name-highlight">Usman.</span></h1>
+                <h2>Amazon Virtual Assistant & Growth Specialist</h2>
+                <p>Running an Amazon store means a lot of moving parts. I help with product research, listings, PPC and day-to-day tasks, so you can make clear decisions without juggling everything alone.</p>
+                <a href="https://wa.me/923009685659" target="_blank" rel="noopener noreferrer" class="btn" data-haptic data-tooltip="Open WhatsApp and start a conversation">
+                    <i class="fab fa-whatsapp"></i> Let’s talk
+                </a>
+            </div>
             <div class="profile-wrapper">
                 <div class="profile-frame">
-                    <img src="IMG_2434.webp" alt="Malik M. Usman" class="profile-img">
-                    <div class="badge" title="Available for Hiring"></div>
+                    <img
+                        src="./assets/images/profile-720.webp"
+                        srcset="./assets/images/profile-480.webp 480w, ./assets/images/profile-720.webp 720w, ./assets/images/profile-1080.webp 1080w"
+                        sizes="(max-width: 640px) 138px, (max-width: 768px) 280px, 27vw"
+                        alt="Malik M. Usman"
+                        class="profile-img"
+                        draggable="false"
+                    >
                 </div>
-            </div>
-            <div class="hero-content">
-                <span class="hero-kicker">Amazon growth, handled thoughtfully</span>
-                <h1>Malik M. Usman</h1>
-                <h2>Amazon Virtual Assistant & Growth Specialist</h2>
-                <p>I help Amazon sellers turn busy storefronts into healthier, more profitable businesses. From finding the right products to improving listings and managing PPC, I bring focused research, clear communication, and dependable day-to-day support.</p>
-                <a href="https://wa.me/923009685659" target="_blank" class="btn" data-haptic data-tooltip="Open WhatsApp and start a conversation">
-                    <i class="fab fa-whatsapp"></i> Hire Me Now
-                </a>
             </div>
         </div>
     </header>
@@ -792,16 +73,16 @@
     <section id="about-me">
         <div class="container">
             <div class="section-header">
-                <h2>A Little About Me</h2>
+                <h2>A bit about how I work</h2>
             </div>
             <div class="about-layout">
                 <div class="about-copy">
-                    <p>I work best with people who want their Amazon business to feel more organized, not more complicated. My role is to bring structure to the details that are easy to miss: product research, listing quality, campaign decisions, inventory, and the small Seller Central tasks that keep a store moving.</p>
-                    <p>I do not believe in promising overnight results. I prefer to understand the store first, explain what I am seeing, and work through improvements that make sense for the brand and its budget. You can expect clear updates, thoughtful research, and someone who takes ownership of the work.</p>
+                    <p>I help with the parts of an Amazon store that are easy to let pile up: product research, listings, ad campaigns, inventory checks and everyday Seller Central tasks. The goal is to make the work feel more manageable, not more complicated.</p>
+                    <p>I like to understand the store before suggesting changes. I’ll explain what I find, be upfront about what still needs checking, and focus on next steps that suit your goals and budget. No overnight-success promises—just careful work and clear updates.</p>
                 </div>
                 <div class="trust-note">
-                    <strong>What working with me feels like</strong>
-                    Calm communication, practical recommendations, and consistent follow-through. I will tell you what I know, what I still need to check, and what I think should happen next.
+                    <strong>Clear updates, no guesswork</strong>
+                    You’ll know what I’m working on, what I’ve found and what I recommend next. If something needs a closer look, I’ll say so.
                 </div>
             </div>
         </div>
@@ -810,28 +91,28 @@
     <section id="services">
         <div class="container">
             <div class="section-header">
-                <h2>Core Expertise</h2>
+                <h2>A few ways I can help</h2>
             </div>
             <div class="cards-grid">
                 <div class="card" data-haptic data-tooltip="Research demand, competition, and product potential">
                     <i class="fas fa-search-dollar card-icon"></i>
                     <h3>Product Research</h3>
-                    <p>In-depth competitor analysis and niche validation using Helium 10 & Jungle Scout to locate profitable products.</p>
+                    <p>Compare demand, competition and costs with tools like Helium 10 and Jungle Scout, so you can weigh an opportunity before committing.</p>
                 </div>
                 <div class="card" data-haptic data-tooltip="Make your product pages clearer and easier to find">
                     <i class="fas fa-pen-nib card-icon"></i>
                     <h3>Listing Optimization</h3>
-                    <p>High-converting, SEO-optimized product titles, bullet points, and descriptions crafted for Amazon search algorithms.</p>
+                    <p>Make titles, bullets and descriptions clearer for shoppers while keeping relevant search terms in view.</p>
                 </div>
                 <div class="card" data-haptic data-tooltip="Build campaigns around useful data and decisions">
                     <i class="fas fa-chart-line card-icon"></i>
                     <h3>PPC & Ads Management</h3>
-                    <p>Custom Sponsored Ads strategies focused on lowering ACoS, boosting organic rank, and maximizing net margins.</p>
+                    <p>Review search terms, bids and spend, then make considered adjustments that fit your goals and budget.</p>
                 </div>
                 <div class="card" data-haptic data-tooltip="Keep everyday Seller Central work organized">
                     <i class="fas fa-store card-icon"></i>
                     <h3>Seller Central Management</h3>
-                    <p>Full daily store operations including inventory planning, order processing, and account health maintenance.</p>
+                    <p>Stay on top of routine Seller Central work, from inventory checks and order follow-up to account health tasks.</p>
                 </div>
             </div>
         </div>
@@ -840,43 +121,43 @@
     <section id="service-detail">
         <div class="container">
             <div class="section-header">
-                <h2>What I Can Take Off Your Plate</h2>
+                <h2>Hands-on support, where you need it</h2>
             </div>
             <div class="detail-grid">
                 <article class="detail-card">
                     <h3>Research & Launch Support</h3>
-                    <p>A grounded starting point for brands exploring a new product or category.</p>
+                    <p>Thinking about a new product? Start with a closer look at the market and the competition.</p>
                     <ul>
-                        <li>Market and competitor review</li>
-                        <li>Keyword and demand research</li>
-                        <li>Opportunity notes and next-step recommendations</li>
+                        <li>Market demand and competition checks</li>
+                        <li>Keyword and search-term research</li>
+                        <li>A concise summary of opportunities and open questions</li>
                     </ul>
                 </article>
                 <article class="detail-card">
                     <h3>Listing Improvement</h3>
-                    <p>Clearer product pages that communicate value to shoppers and support discoverability.</p>
+                    <p>Give shoppers the details they need, with product pages that are easier to scan and understand.</p>
                     <ul>
-                        <li>Title, bullets, and description review</li>
-                        <li>Search term and keyword alignment</li>
-                        <li>Conversion-focused content suggestions</li>
+                        <li>Review titles, bullets and descriptions</li>
+                        <li>Check keywords against how customers search</li>
+                        <li>Suggest useful content improvements</li>
                     </ul>
                 </article>
                 <article class="detail-card">
                     <h3>PPC Support</h3>
-                    <p>Campaign work focused on making decisions easier to understand and improve.</p>
+                    <p>Get a clearer view of where your ad budget is going and what may be worth adjusting.</p>
                     <ul>
-                        <li>Campaign setup and organization</li>
-                        <li>Search term and spend review</li>
-                        <li>Ongoing optimization recommendations</li>
+                        <li>Campaign setup and tidy organization</li>
+                        <li>Review search terms, bids and spend</li>
+                        <li>Practical adjustments to test over time</li>
                     </ul>
                 </article>
                 <article class="detail-card">
                     <h3>Store Operations</h3>
-                    <p>Reliable help with the recurring work behind a healthy Seller Central account.</p>
+                    <p>Keep everyday store tasks moving and spot account issues before they become harder to untangle.</p>
                     <ul>
-                        <li>Inventory and order coordination</li>
-                        <li>Case log and account health support</li>
-                        <li>Regular progress updates</li>
+                        <li>Inventory checks and order follow-up</li>
+                        <li>Case logs and account health tasks</li>
+                        <li>Steady updates on what’s done and what’s next</li>
                     </ul>
                 </article>
             </div>
@@ -886,28 +167,28 @@
     <section id="process">
         <div class="container">
             <div class="section-header">
-                <h2>How We Would Work Together</h2>
+                <h2>A simple, practical way to work together</h2>
             </div>
             <div class="process-grid">
                 <article class="process-step" data-haptic data-tooltip="Start with context, goals, and the current situation">
                     <span class="step-number">01 / UNDERSTAND</span>
                     <h3>Start with context</h3>
-                    <p>We look at your store, goals, priorities, and what is currently getting in the way.</p>
+                    <p>We start with your store, your priorities and the parts of the work that feel stuck.</p>
                 </article>
                 <article class="process-step" data-haptic data-tooltip="Turn observations into a practical plan">
                     <span class="step-number">02 / PLAN</span>
                     <h3>Choose the right next step</h3>
-                    <p>You get a focused plan that fits the stage of your business and the time available.</p>
+                    <p>I’ll suggest a manageable next step that fits your business and the time you have.</p>
                 </article>
                 <article class="process-step" data-haptic data-tooltip="Complete the agreed work with clear updates">
                     <span class="step-number">03 / WORK</span>
                     <h3>Do the work carefully</h3>
-                    <p>I handle the agreed tasks and keep communication straightforward as things move forward.</p>
+                    <p>I take care of the agreed tasks and keep you posted as the work moves along.</p>
                 </article>
                 <article class="process-step" data-haptic data-tooltip="Review progress and decide what comes next">
                     <span class="step-number">04 / REVIEW</span>
                     <h3>Review and improve</h3>
-                    <p>We look at what changed, what we learned, and which improvement is worth making next.</p>
+                    <p>We review what changed, what we learned and whether anything needs a follow-up.</p>
                 </article>
             </div>
         </div>
@@ -916,7 +197,7 @@
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <h2>Tools & Specialized Skills</h2>
+                <h2>Tools I work with</h2>
             </div>
             <div class="skills-grid">
                 <div class="skill-box" data-tooltip="Product research and market intelligence"><i class="fas fa-check-circle"></i> Helium 10 Platinum</div>
@@ -934,20 +215,20 @@
     <section id="engagement">
         <div class="container">
             <div class="section-header">
-                <h2>Ways We Can Work Together</h2>
+                <h2>Flexible ways to work together</h2>
             </div>
             <div class="engagement-grid">
                 <article class="engagement-card">
                     <h3>One-Time Audit</h3>
-                    <p>A focused review when you need a second pair of eyes and a clear list of priorities.</p>
+                    <p>Get a fresh look at your store and a short, useful list of what to tackle first.</p>
                 </article>
                 <article class="engagement-card">
                     <h3>Project Support</h3>
-                    <p>Hands-on help for a launch, listing refresh, campaign setup, or another defined project.</p>
+                    <p>Bring me in for a specific job, like a launch, listing refresh or campaign setup.</p>
                 </article>
                 <article class="engagement-card">
                     <h3>Ongoing Partnership</h3>
-                    <p>Steady support for the recurring work that keeps your store organized and moving.</p>
+                    <p>Get reliable help with recurring tasks and the details that keep your store on track.</p>
                 </article>
             </div>
         </div>
@@ -956,23 +237,23 @@
     <section id="metrics">
         <div class="container">
             <div class="section-header">
-                <h2>What I Pay Attention To</h2>
+                <h2>The details I keep an eye on</h2>
             </div>
             <div class="metrics-grid">
                 <article class="metric-card">
                     <strong>Advertising efficiency</strong>
                     <h3>ACoS and spend quality</h3>
-                    <p>Are campaigns spending on useful terms, and is the budget supporting the store's goals?</p>
+                    <p>Are ads reaching relevant searches, and does the spend make sense for your goals?</p>
                 </article>
                 <article class="metric-card">
                     <strong>Customer response</strong>
                     <h3>Conversion and listing clarity</h3>
-                    <p>Does the product page answer the shopper's questions and make the next step feel easy?</p>
+                    <p>Can shoppers quickly understand the product, its benefits and what to do next?</p>
                 </article>
                 <article class="metric-card">
                     <strong>Store health</strong>
                     <h3>Operations and account signals</h3>
-                    <p>Are inventory, cases, account health, and daily tasks being handled before they become problems?</p>
+                    <p>Are inventory, support cases and routine tasks being checked before they turn into bigger issues?</p>
                 </article>
             </div>
         </div>
@@ -981,24 +262,24 @@
     <section id="faq">
         <div class="container">
             <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
+                <h2>A few common questions</h2>
             </div>
             <div class="faq-list">
                 <details class="faq-item">
                     <summary>What kind of Amazon support do you provide?</summary>
-                    <p class="faq-answer">I support product research, listing optimization, PPC management, inventory planning, Seller Central operations, and account health tasks. We can shape the support around the parts of your store that need the most attention.</p>
+                    <p class="faq-answer">I can help with product research, listing updates, PPC, inventory checks, everyday Seller Central work and account health tasks. We can start with whichever part of the store needs attention first.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Can you work with an existing Amazon store?</summary>
-                    <p class="faq-answer">Absolutely. I can review what is already working, identify bottlenecks, and build a practical improvement plan without disrupting the parts of your operation that are performing well.</p>
+                    <p class="faq-answer">Yes. I’ll first learn how the store is running, then we can focus on the gaps without changing things that are already working well.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Do you offer one-time projects or ongoing support?</summary>
-                    <p class="faq-answer">Both. I am available for focused audits and setup projects as well as ongoing store management and monthly PPC or listing support.</p>
+                    <p class="faq-answer">Yes—one-off audits and projects, or ongoing help with store tasks, PPC or listings. We can agree on a scope that suits what you need.</p>
                 </details>
                 <details class="faq-item">
                     <summary>How do we get started?</summary>
-                    <p class="faq-answer">Send me a message with your store, goals, and current challenges. I will learn what you need, suggest the most useful next step, and keep the process straightforward.</p>
+                    <p class="faq-answer">Send a message with a little about your store and what you’d like help with. We can take it from there and figure out a sensible next step.</p>
                 </details>
             </div>
         </div>
@@ -1007,16 +288,16 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Start a Conversation</h2>
+                <h2>Tell me what you’re working on</h2>
             </div>
             <div class="contact-container">
                 <div class="contact-intro">
                     <h3>Let's talk about your store</h3>
-                    <p>Share your business model, challenge, required service, and a time that works for you.</p>
+                    <p>Send a few details about your store and what’s keeping you busy. I’ll get back to you to talk through the next step.</p>
                     <div class="contact-channels">
                         <div class="contact-channel">
                             <span class="channel-icon"><i class="fab fa-whatsapp"></i></span>
-                            <div><strong>WhatsApp / Phone</strong><a href="https://wa.me/923009685659" target="_blank" data-haptic>+92 300 9685659</a></div>
+                            <div><strong>WhatsApp / Phone</strong><a href="https://wa.me/923009685659" target="_blank" rel="noopener noreferrer" data-haptic>+92 300 9685659</a></div>
                         </div>
                         <div class="contact-channel">
                             <span class="channel-icon"><i class="fas fa-at"></i></span>
@@ -1033,8 +314,8 @@
                     </div>
                 </div>
                 <div class="consultation-panel">
-                    <h3>Request Free Consultation</h3>
-                    <p>Complete the form and share only what helps me understand where you need support.</p>
+                    <h3>Let’s find a good next step</h3>
+                    <p>Fill in the form with whatever context you’re comfortable sharing. It’s a starting point, not a commitment.</p>
                     <form class="inquiry-form" action="mailto:malik.usman.va@gmail.com" method="post" enctype="text/plain">
                         <div class="form-row">
                             <label>Full Name <span class="required-mark">*</span>
@@ -1060,7 +341,7 @@
                             </label>
                         </div>
                         <div class="form-row">
-                            <label>Required Service <span class="required-mark">*</span>
+                            <label>What do you need help with? <span class="required-mark">*</span>
                                 <select name="service" required>
                                     <option value="">Select a service</option>
                                 <option>Product research</option>
@@ -1084,10 +365,10 @@
                             </select>
                         </label>
                         <label>Message <span class="required-mark">*</span>
-                            <textarea name="message" placeholder="Tell me about your Amazon store, challenge, required service, and goals..." required></textarea>
+                            <textarea name="message" placeholder="What’s happening with your store, and what would you like help with?" required></textarea>
                         </label>
                         <button type="submit" class="btn" data-haptic data-tooltip="Open your email app with this message ready"><i class="fas fa-paper-plane"></i> Send Inquiry</button>
-                        <p class="form-note">Your message opens in your email app. I will reply with a practical next step.</p>
+                        <p class="form-note">Your email app will open with the message ready to send. I’ll reply personally.</p>
                         <p class="form-status" aria-live="polite"></p>
                     </form>
                 </div>
@@ -1095,9 +376,13 @@
         </div>
     </section>
 
-    <a href="https://wa.me/923009685659" class="whatsapp-float" target="_blank" title="Chat on WhatsApp" data-haptic data-tooltip="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <button type="button" class="scroll-top-button" aria-label="Back to top" title="Back to top" data-haptic data-tooltip="Back to top">
+        <svg class="scroll-progress-ring" viewBox="0 0 64 64" aria-hidden="true">
+            <circle class="scroll-progress-track" cx="32" cy="32" r="28"></circle>
+            <circle class="scroll-progress-value" cx="32" cy="32" r="28"></circle>
+        </svg>
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <footer>
         <div class="container">
@@ -1105,39 +390,7 @@
         </div>
     </footer>
 
-    <script>
-        const hapticElements = document.querySelectorAll('a, button, summary, input, select, textarea');
-        const inquiryForm = document.querySelector('.inquiry-form');
-        const formStatus = document.querySelector('.form-status');
-
-        hapticElements.forEach((element) => {
-            element.addEventListener('click', () => {
-                if ('vibrate' in navigator) {
-                    navigator.vibrate(12);
-                }
-            });
-        });
-
-        inquiryForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const formData = new FormData(inquiryForm);
-            const subject = `Amazon support inquiry from ${formData.get('name')}`;
-            const body = [
-                `Name: ${formData.get('name')}`,
-                `Email: ${formData.get('email')}`,
-                `Phone / WhatsApp: ${formData.get('phone')}`,
-                `Business type: ${formData.get('business_type')}`,
-                `Service: ${formData.get('service')}`,
-                `Preferred date: ${formData.get('date')}`,
-                `Preferred time slot: ${formData.get('time_slot')}`,
-                '',
-                formData.get('message')
-            ].join('\n');
-
-            formStatus.textContent = 'Opening your email app...';
-            window.location.href = `mailto:malik.usman.va@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        });
-    </script>
+    <script src="./assets/js/main.js" defer></script>
 
 </body>
 </html>
