@@ -144,65 +144,11 @@
         display: none;
       }
 
-      body {
-        margin: 0;
-        min-height: 100vh;
-        overflow-x: hidden;
-        font-family: "Inter", sans-serif;
-        background:
-          radial-gradient(
-            circle at top,
-            rgba(255, 153, 0, 0.14),
-            transparent 24%
-          ),
-          linear-gradient(180deg, var(--primary-dark) 0%, #0b1120 100%);
-        color: var(--text-light);
-        line-height: 1.6;
-      }
-
-      body::before,
-      body::after {
-        content: "";
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(70px);
-        pointer-events: none;
-        z-index: -1;
-        opacity: 0.7;
-        animation: drift 18s ease-in-out infinite alternate;
-      }
-
-      body::before {
-        width: 280px;
-        height: 280px;
-        background: rgba(255, 153, 0, 0.18);
-        top: 8%;
-        left: -60px;
-      }
-
-      body::after {
-        width: 260px;
-        height: 260px;
-        background: rgba(59, 130, 246, 0.14);
-        right: -60px;
-        bottom: 10%;
-        animation-delay: 2s;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      ul,
-      ol {
-        list-style: none;
-      }
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
 
       .container {
         width: min(var(--container), calc(100% - 32px));
@@ -271,404 +217,94 @@
         color: var(--accent-gold);
       }
 
-      /* Desktop-only hire button; the burger menu carries the CTAs on mobile. */
-      .nav-cta {
-        display: inline-flex;
-        align-items: center;
-        min-height: 42px;
-        padding: 0 18px;
-        border-radius: var(--radius-sm);
-        background: var(--accent-gold);
-        color: var(--on-accent);
-        font-size: 0.9rem;
-        font-weight: 700;
-        transition:
-          background 0.2s ease,
-          transform 0.2s ease;
-      }
+        /* Hero Section */
+        .hero-section {
+            padding: 140px 0 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(255, 153, 0, 0.15), transparent 60%);
+        }
 
-      .nav-cta:hover,
-      .nav-cta:focus-visible {
-        background: var(--accent-hover);
-        transform: translateY(-2px);
-      }
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
 
-      /* The checkbox is the state store; visually hidden but focusable. */
-      .nav-toggle {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 0 25px rgba(255, 153, 0, 0.3);
+        }
 
-      .nav-burger {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-sm);
-        background: var(--accent-gold-soft);
-        cursor: pointer;
-      }
+        .badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #22c55e;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-dark);
+        }
 
-      .nav-burger > span:first-child,
-      .nav-burger > span:first-child::before,
-      .nav-burger > span:first-child::after {
-        display: block;
-        width: 20px;
-        height: 2px;
-        border-radius: var(--radius-pill);
-        background: var(--accent-gold);
-        transition:
-          transform 0.25s ease,
-          opacity 0.2s ease;
-      }
+        .hero-section h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
 
-      .nav-burger > span:first-child {
-        position: relative;
-      }
+        .hero-section h2 {
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
 
-      .nav-burger > span:first-child::before,
-      .nav-burger > span:first-child::after {
-        content: "";
-        position: absolute;
-        left: 0;
-      }
+        .hero-section p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
 
-      .nav-burger > span:first-child::before {
-        top: -6px;
-      }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent-gold);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
 
-      .nav-burger > span:first-child::after {
-        top: 6px;
-      }
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 153, 0, 0.2);
+        }
 
-      /* Open state: collapse the three bars into a cross. */
-      .nav-toggle:checked ~ .nav-burger > span:first-child {
-        background: transparent;
-      }
+        /* Section Layouts */
+        section {
+            padding: 60px 0;
+        }
 
-      .nav-toggle:checked ~ .nav-burger > span:first-child::before {
-        transform: translateY(6px) rotate(45deg);
-      }
+        .section-header {
+            margin-bottom: 40px;
+        }
 
-      .nav-toggle:checked ~ .nav-burger > span:first-child::after {
-        transform: translateY(-6px) rotate(-45deg);
-      }
-
-      .nav-toggle:focus-visible ~ .nav-burger {
-        outline: 2px solid var(--accent-gold);
-        outline-offset: 3px;
-      }
-
-      /* Accessible text that only screen readers announce. */
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      .hero {
-        position: relative;
-        overflow: hidden;
-        padding: 100px 0 80px;
-        background: radial-gradient(
-          circle at top,
-          rgba(255, 153, 0, 0.16),
-          transparent 45%
-        );
-      }
-
-      .hero::before,
-      .hero::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.35;
-        pointer-events: none;
-        animation: pulseGlow 8s ease-in-out infinite alternate;
-      }
-
-      .hero::before {
-        width: 240px;
-        height: 240px;
-        background: rgba(255, 153, 0, 0.2);
-        top: 50px;
-        right: 12%;
-      }
-
-      .hero::after {
-        width: 200px;
-        height: 200px;
-        background: rgba(59, 130, 246, 0.1);
-        left: 10%;
-        bottom: 40px;
-        animation-delay: 1.5s;
-      }
-
-      .hero-layout {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-        gap: 48px;
-      }
-
-      .hero-copy,
-      .profile-panel,
-      .metric-card,
-      .card,
-      .value-panel,
-      .skill-box,
-      .contact-wrap {
-        animation: fadeUp 0.8s ease both;
-      }
-
-      .hero-copy {
-        animation-delay: 0.05s;
-      }
-
-      .profile-panel {
-        animation-delay: 0.15s;
-      }
-
-      .card:nth-child(2) {
-        animation-delay: 0.1s;
-      }
-      .card:nth-child(3) {
-        animation-delay: 0.2s;
-      }
-      .card:nth-child(4) {
-        animation-delay: 0.3s;
-      }
-      .card:nth-child(5) {
-        animation-delay: 0.4s;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 9px 14px;
-        border-radius: var(--radius-pill);
-        border: 1px solid rgba(255, 153, 0, 0.35);
-        background: rgba(255, 153, 0, 0.08);
-        color: var(--accent-gold);
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-weight: 700;
-        margin-bottom: 22px;
-      }
-
-      .eyebrow::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--success);
-        box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
-      }
-
-      h1 {
-        font-size: clamp(2.5rem, 5vw, 4.25rem);
-        line-height: 1.1;
-        letter-spacing: -0.04em;
-        margin-bottom: 16px;
-        font-weight: 800;
-      }
-
-      .hero-subtitle {
-        font-size: clamp(1.1rem, 2vw, 1.5rem);
-        color: var(--accent-gold);
-        font-weight: 600;
-        margin-bottom: 20px;
-      }
-
-      .hero-copy p:not(.hero-subtitle):not(.eyebrow) {
-        max-width: 620px;
-        color: var(--text-muted);
-        font-size: 1.06rem;
-        margin-bottom: 24px;
-      }
-
-      .button-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        margin-bottom: 28px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        min-height: 48px;
-        padding: 0 22px;
-        border-radius: var(--radius-sm);
-        border: 1px solid transparent;
-        font-weight: 700;
-        font-size: 0.98rem;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease,
-          border-color 0.2s ease,
-          background 0.2s ease;
-      }
-
-      .btn:hover,
-      .btn:focus-visible {
-        transform: translateY(-2px);
-      }
-
-      .btn-primary {
-        background: linear-gradient(
-          135deg,
-          var(--accent-gold) 0%,
-          var(--accent-hover) 100%
-        );
-        color: var(--on-accent);
-        box-shadow: 0 10px 25px var(--accent-gold-glow);
-      }
-
-      .btn-secondary {
-        background: transparent;
-        border-color: var(--border-color);
-        color: var(--text-light);
-      }
-
-      .btn-secondary:hover,
-      .btn-secondary:focus-visible {
-        border-color: var(--border-accent);
-        background: var(--accent-gold-soft);
-      }
-
-      .mini-stats {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 18px;
-        color: var(--text-soft);
-        font-weight: 500;
-      }
-
-      .mini-stats li {
-        background: rgba(148, 163, 184, 0.05);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-sm);
-        padding: 12px 16px;
-      }
-
-      .profile-panel {
-        position: relative;
-        display: flex;
-        justify-content: center;
-      }
-
-      .profile-card {
-        position: relative;
-        width: min(420px, 100%);
-        padding: 24px;
-        border-radius: var(--radius-lg);
-        background: linear-gradient(
-          180deg,
-          var(--surface-strong),
-          var(--surface-flat)
-        );
-        border: 1px solid var(--border-color);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .profile-card img {
-        width: 100%;
-        max-width: 330px;
-        height: auto;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--accent-gold);
-        margin: 0 auto 16px;
-        box-shadow: 0 0 30px var(--accent-gold-glow);
-      }
-
-      .status-badge {
-        position: absolute;
-        right: 42px;
-        bottom: 78px;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: var(--success);
-        border: 4px solid var(--primary-dark);
-        box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.12);
-      }
-
-      .availability {
-        text-align: center;
-        color: var(--text-muted);
-        font-size: 0.94rem;
-        font-weight: 600;
-      }
-
-      .stats-strip {
-        padding-top: 0;
-        padding-bottom: 10px;
-      }
-
-      .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .metric-card {
-        background: var(--surface-flat);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        padding: 22px 20px;
-        text-align: center;
-        box-shadow: var(--shadow-md);
-      }
-
-      .metric-card strong {
-        display: block;
-        color: var(--accent-gold);
-        font-size: clamp(1.5rem, 2vw, 2.2rem);
-        margin-bottom: 8px;
-      }
-
-      .metric-card span {
-        color: var(--text-muted);
-        font-weight: 500;
-      }
-
-      section {
-        padding: var(--section-y) 0;
-      }
-
-      /* Anchor targets must not hide under the sticky header. */
-      section[id] {
-        scroll-margin-top: var(--header-h);
-      }
-
-      .section-header {
-        margin-bottom: 36px;
-      }
-
-      .section-header h2 {
-        position: relative;
-        display: inline-block;
-        font-size: clamp(1.8rem, 3vw, 2.5rem);
-        letter-spacing: -0.04em;
-        margin-bottom: 12px;
-      }
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
 
       .section-header h2::after {
         content: "";
@@ -693,31 +329,19 @@
         gap: 22px;
       }
 
-      .card {
-        background: linear-gradient(
-          180deg,
-          var(--surface),
-          var(--surface-flat)
-        );
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        padding: 28px 22px;
-        transition:
-          transform 0.2s ease,
-          border-color 0.2s ease,
-          box-shadow 0.2s ease,
-          filter 0.2s ease;
-        box-shadow: var(--shadow-md);
-        animation: floatCard 7s ease-in-out infinite;
-      }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px 25px;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
 
-      .card:hover,
-      .card:focus-within {
-        transform: translateY(-4px) scale(1.01);
-        border-color: var(--border-accent);
-        box-shadow: 0 18px 30px rgba(2, 8, 23, 0.32);
-        filter: brightness(1.04);
-      }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
 
       .card-icon {
         display: inline-flex;
@@ -737,60 +361,17 @@
         margin-bottom: 12px;
       }
 
-      .card p {
-        color: var(--text-muted);
-      }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
 
-      .value-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-        align-items: stretch;
-      }
-
-      .value-panel {
-        background: var(--surface-flat);
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-lg);
-        padding: 28px;
-        box-shadow: var(--shadow-md);
-      }
-
-      .value-panel:first-child {
-        animation-delay: 0.1s;
-      }
-
-      .value-panel:last-child {
-        animation-delay: 0.2s;
-      }
-
-      .value-panel h3 {
-        margin-bottom: 18px;
-        font-size: 1.4rem;
-      }
-
-      .check-list {
-        display: grid;
-        gap: 14px;
-      }
-
-      .check-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        color: var(--text-muted);
-      }
-
-      .check-list i {
-        color: var(--accent-gold);
-        margin-top: 4px;
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-      }
+        /* Tech Stack Table / Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
 
       .skill-box {
         display: flex;
@@ -813,54 +394,21 @@
         border-color: var(--border-accent);
       }
 
-      .skill-box i {
-        color: var(--accent-gold);
-        font-size: 1.1rem;
-      }
+        .skill-box i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
 
-      .contact-wrap {
-        background: linear-gradient(
-          135deg,
-          var(--surface-strong),
-          var(--surface-flat)
-        );
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-lg);
-        padding: clamp(24px, 4vw, 42px);
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 28px;
-        box-shadow: var(--shadow-lg);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .contact-wrap::before {
-        content: "";
-        position: absolute;
-        inset: auto -30px -30px auto;
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background: rgba(255, 153, 0, 0.08);
-        filter: blur(30px);
-      }
-
-      .contact-copy h3 {
-        font-size: clamp(1.6rem, 2vw, 2rem);
-        margin-bottom: 12px;
-      }
-
-      .contact-copy p {
-        color: var(--text-muted);
-        margin-bottom: 24px;
-      }
-
-      .contact-list {
-        display: grid;
-        gap: 18px;
-        align-content: center;
-      }
+        /* Contact Section */
+        .contact-container {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
 
       .contact-item {
         display: flex;
@@ -920,609 +468,137 @@
           box-shadow 0.2s ease;
       }
 
-      .whatsapp-float:hover,
-      .whatsapp-float:focus-visible {
-        transform: scale(1.06);
-        box-shadow: 0 18px 34px rgba(37, 211, 102, 0.4);
-      }
-
-      footer {
-        padding: 26px 0 40px;
-        border-top: 1px solid var(--border-color);
-        color: var(--text-soft);
-        text-align: center;
-      }
-
-      :focus-visible {
-        outline: 2px solid var(--accent-gold);
-        outline-offset: 3px;
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes floatCard {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-8px);
-        }
-      }
-
-      @keyframes drift {
-        0% {
-          transform: translate3d(0, 0, 0) scale(1);
-        }
-        100% {
-          transform: translate3d(30px, -20px, 0) scale(1.1);
-        }
-      }
-
-      @keyframes pulseGlow {
-        0% {
-          transform: scale(1);
-          opacity: 0.25;
-        }
-        100% {
-          transform: scale(1.25);
-          opacity: 0.45;
-        }
-      }
-
-      @media (max-width: 840px) {
-        .hero-layout,
-        .contact-wrap,
-        .value-grid,
-        .metrics-grid {
-          grid-template-columns: 1fr;
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
 
-        .nav {
-          min-height: 64px;
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        /* Section jumps need to clear the shorter mobile header. */
-        section[id] {
-          scroll-margin-top: 64px;
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2.1rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
-
-        /* Burger replaces the inline links; the list becomes a drop-down panel. */
-        .nav-burger {
-          display: flex;
-          order: 3;
-        }
-
-        .nav-cta {
-          margin-left: auto;
-          margin-right: 12px;
-        }
-
-        .nav-links {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          gap: 0;
-          padding: 8px 16px 16px;
-          background: var(--surface-strong);
-          border-bottom: 1px solid var(--border-color);
-          box-shadow: var(--shadow-lg);
-          flex-direction: column;
-          align-items: stretch;
-          /* Collapsed until the checkbox is checked. */
-          display: none;
-        }
-
-        /* Sibling combinator avoids :has() for broad browser support. */
-        .nav-toggle:checked ~ .nav-links {
-          display: flex;
-        }
-
-        .nav-links li + li {
-          border-top: 1px solid var(--border-color);
-        }
-
-        .nav-links a {
-          display: block;
-          padding: 14px 4px;
-          font-size: 1rem;
-          font-weight: 600;
-        }
-
-        .hero {
-          padding-top: 82px;
-        }
-
-        .profile-card {
-          max-width: 360px;
-        }
-
-        .status-badge {
-          right: 54px;
-          bottom: 82px;
-        }
-
-        .button-row {
-          flex-direction: column;
-        }
-
-        .btn {
-          width: 100%;
-        }
-
-        .mini-stats {
-          gap: 10px;
-        }
-
-        .mini-stats li {
-          width: 100%;
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 540px) {
-        .container {
-          width: min(var(--container), calc(100% - 20px));
-        }
-
-        .brand {
-          font-size: 1.2rem;
-        }
-
-        .hero {
-          padding: 72px 0 56px;
-        }
-
-        .hero-copy {
-          text-align: center;
-        }
-
-        .hero-copy p:not(.hero-subtitle):not(.eyebrow) {
-          font-size: 0.98rem;
-        }
-
-        .eyebrow {
-          font-size: 0.72rem;
-          padding: 8px 12px;
-        }
-
-        .hero-subtitle {
-          font-size: 1.04rem;
-        }
-
-        .profile-card {
-          padding: 16px;
-        }
-
-        .profile-card img {
-          max-width: 250px;
-        }
-
-        .status-badge {
-          right: 46px;
-          bottom: 68px;
-        }
-
-        section {
-          padding: var(--section-y-sm) 0;
-        }
-
-        .section-header {
-          margin-bottom: 28px;
-        }
-
-        .section-header p {
-          font-size: 0.96rem;
-        }
-
-        .cards-grid {
-          gap: 18px;
-        }
-
-        .card,
-        .value-panel,
-        .contact-wrap {
-          border-radius: 16px;
-        }
-
-        .contact-item {
-          align-items: flex-start;
-        }
-
-        .whatsapp-float {
-          width: 56px;
-          height: 56px;
-          right: 16px;
-          bottom: 16px;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-
-        *,
-        *::before,
-        *::after {
-          animation: none !important;
-          transition: none !important;
-        }
-      }
     </style>
-  </head>
-  <body id="top">
-    <a class="skip-link" href="#main-content">Skip to content</a>
+</head>
+<body>
 
-    <header class="site-header">
-      <nav class="container nav" aria-label="Main navigation">
-        <a class="brand" href="#top" aria-label="Malik M. Usman home"
-          >Malik<span>.VA</span></a
-        >
-        <!-- Checkbox precedes the list so `~` can toggle the panel. -->
-        <input class="nav-toggle" type="checkbox" id="nav-toggle" />
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a
-          class="nav-cta"
-          href="https://wa.me/923009685659"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Hire Me</a
-        >
-        <label class="nav-burger" for="nav-toggle">
-          <span></span>
-          <span class="sr-only">Menu</span>
-        </label>
-      </nav>
-    </header>
-
-    <main id="main-content">
-      <section class="hero" id="about">
-        <div class="container hero-layout">
-          <div class="hero-copy">
-            <p class="eyebrow">Amazon Growth Partner</p>
-            <h1>Malik M. Usman</h1>
-            <p class="hero-subtitle">
-              Amazon Virtual Assistant &amp; Growth Specialist
-            </p>
-            <p>
-              Helping e-commerce brands scale with data-driven Amazon store
-              management, high-ROI PPC campaigns, and profitable product
-              research strategies built for long-term growth.
-            </p>
-            <div class="button-row">
-              <a
-                class="btn btn-primary"
-                href="https://wa.me/923009685659"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                Hire Me Now
-              </a>
-              <a
-                class="btn btn-secondary"
-                href="mailto:malik.usman.va@gmail.com"
-              >
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-                Email Me
-              </a>
-            </div>
-            <ul class="mini-stats" aria-label="Key value points">
-              <li>Seller Central Expert</li>
-              <li>PPC Optimization</li>
-              <li>Listing Growth</li>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Malik<span>.VA</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-          </div>
+        </div>
+    </nav>
 
-          <div
-            class="profile-panel"
-            aria-label="Profile image and availability"
-          >
-            <div class="profile-card">
-              <img
-                src="portrait-720.webp"
-                srcset="portrait-480.webp 480w, portrait-720.webp 720w, portrait-1080.webp 1080w"
-                sizes="(max-width: 540px) 250px, (max-width: 840px) 330px, 330px"
-                width="330"
-                height="330"
-                alt="Portrait of Malik M. Usman, Amazon Virtual Assistant and Growth Specialist"
-                loading="eager"
-                decoding="async"
-                fetchpriority="high"
-              />
-              <div
-                class="status-badge"
-                aria-label="Available for new projects"
-              ></div>
-              <div class="availability">Available for new projects</div>
+    <header class="hero-section" id="about">
+        <div class="container">
+            <div class="profile-wrapper">
+                <img src="IMG_2434.webp" alt="Malik M. Usman" class="profile-img">
+                <div class="badge" title="Available for Hiring"></div>
             </div>
-          </div>
+            <h1>Malik M. Usman</h1>
+            <h2>Amazon Virtual Assistant & Growth Specialist</h2>
+            <p>Empowering E-commerce brands with data-driven Amazon Store Management, High-ROI PPC Advertising, and Advanced Product Research strategies.</p>
+            <a href="https://wa.me/923009685659" target="_blank" class="btn">
+                <i class="fab fa-whatsapp"></i> Hire Me Now
+            </a>
         </div>
-      </section>
-
-      <section class="stats-strip" aria-label="Business overview">
-        <div class="container metrics-grid">
-          <div class="metric-card">
-            <strong>4+</strong>
-            <span>Core Amazon Services</span>
-          </div>
-          <div class="metric-card">
-            <strong>100%</strong>
-            <span>Focus on Growth &amp; Profitability</span>
-          </div>
-          <div class="metric-card">
-            <strong>24/7</strong>
-            <span>Responsive Communication</span>
-          </div>
-        </div>
-      </section>
+    </header>
 
       <section id="services">
         <div class="container">
-          <div class="section-header">
-            <h2>Core Expertise</h2>
-            <p>
-              Focused support for brands that need cleaner execution, stronger
-              Amazon performance, and smarter daily operations.
-            </p>
-          </div>
-
-          <div class="cards-grid">
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">
-                <i class="fas fa-search-dollar"></i>
-              </div>
-              <h3>Product Research</h3>
-              <p>
-                Competitor analysis, market validation, and niche opportunity
-                discovery using Helium 10, Jungle Scout, and keyword
-                intelligence.
-              </p>
-            </article>
-
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">
-                <i class="fas fa-pen-nib"></i>
-              </div>
-              <h3>Listing Optimization</h3>
-              <p>
-                Conversion-focused copywriting for titles, bullet points,
-                backend keywords, and A+ content tuned for Amazon search
-                visibility.
-              </p>
-            </article>
-
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              <h3>PPC &amp; Ads Management</h3>
-              <p>
-                Campaign planning and optimization designed to reduce ACoS,
-                improve keyword targeting, and strengthen organic ranking.
-              </p>
-            </article>
-
-            <article class="card">
-              <div class="card-icon" aria-hidden="true">
-                <i class="fas fa-store"></i>
-              </div>
-              <h3>Seller Central Management</h3>
-              <p>
-                Inventory planning, order flow management, account health, case
-                logs, and operational support that keeps storefronts running
-                smoothly.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="value">
-        <div class="container">
-          <div class="section-header">
-            <h2>Why Partner With Me</h2>
-            <p>
-              I bring structure, analytical thinking, and execution discipline
-              to every Amazon operation I support.
-            </p>
-          </div>
-
-          <div class="value-grid">
-            <div class="value-panel">
-              <h3>What You Can Expect</h3>
-              <ul class="check-list">
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Clear communication and proactive updates across every
-                    task.</span
-                  >
-                </li>
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Sharp keyword and product data analysis to support better
-                    decisions.</span
-                  >
-                </li>
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Operational systems that support account health and faster
-                    execution.</span
-                  >
-                </li>
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Strategy rooted in profitability, conversion improvement,
-                    and growth.</span
-                  >
-                </li>
-              </ul>
+            <div class="section-header">
+                <h2>Core Expertise</h2>
             </div>
-
-            <div class="value-panel">
-              <h3>Tools &amp; Workflow</h3>
-              <ul class="check-list">
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Helium 10, Jungle Scout, and MerchantWords for product and
-                    keyword research.</span
-                  >
-                </li>
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Campaign optimization with performance review and search
-                    term analysis.</span
-                  >
-                </li>
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Brand Registry and A+ content support for improved shopper
-                    trust.</span
-                  >
-                </li>
-                <li>
-                  <i class="fas fa-check-circle" aria-hidden="true"></i
-                  ><span
-                    >Advanced Excel reporting for clean data tracking and
-                    decision-making.</span
-                  >
-                </li>
-              </ul>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-search-dollar card-icon"></i>
+                    <h3>Product Research</h3>
+                    <p>In-depth competitor analysis and niche validation using Helium 10 & Jungle Scout to locate profitable products.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-pen-nib card-icon"></i>
+                    <h3>Listing Optimization</h3>
+                    <p>High-converting, SEO-optimized product titles, bullet points, and descriptions crafted for Amazon search algorithms.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-chart-line card-icon"></i>
+                    <h3>PPC & Ads Management</h3>
+                    <p>Custom Sponsored Ads strategies focused on lowering ACoS, boosting organic rank, and maximizing net margins.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-store card-icon"></i>
+                    <h3>Seller Central Management</h3>
+                    <p>Full daily store operations including inventory planning, order processing, and account health maintenance.</p>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
       <section id="skills">
         <div class="container">
-          <div class="section-header">
-            <h2>Tools &amp; Specialized Skills</h2>
-            <p>
-              Practical Amazon knowledge combined with hands-on execution across
-              research, ads, and operational tasks.
-            </p>
-          </div>
-
-          <div class="skills-grid" aria-label="Skill list">
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>Helium 10 Platinum</span>
+            <div class="section-header">
+                <h2>Tools & Specialized Skills</h2>
             </div>
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>Jungle Scout</span>
+            <div class="skills-grid">
+                <div class="skill-box"><i class="fas fa-check-circle"></i> Helium 10 Platinum</div>
+                <div class="skill-box"><i class="fas fa-check-circle"></i> Jungle Scout</div>
+                <div class="skill-box"><i class="fas fa-check-circle"></i> MerchantWords</div>
+                <div class="skill-box"><i class="fas fa-check-circle"></i> Amazon Campaign Manager</div>
+                <div class="skill-box"><i class="fas fa-check-circle"></i> FBA Inventory Planning</div>
+                <div class="skill-box"><i class="fas fa-check-circle"></i> Brand Registry & A+ Content</div>
+                <div class="skill-box"><i class="fas fa-check-circle"></i> Case Log & Support Resolution</div>
+                <div class="skill-box"><i class="fas fa-check-circle"></i> Advanced MS Excel Analytics</div>
             </div>
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>MerchantWords</span>
-            </div>
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>Amazon Campaign Manager</span>
-            </div>
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>FBA Inventory Planning</span>
-            </div>
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>Brand Registry &amp; A+ Content</span>
-            </div>
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>Case Log &amp; Support Resolution</span>
-            </div>
-            <div class="skill-box">
-              <i class="fas fa-check-circle" aria-hidden="true"></i
-              ><span>Advanced MS Excel Analytics</span>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
       <section id="contact">
         <div class="container">
-          <div class="section-header">
-            <h2>Get In Touch</h2>
-            <p>
-              Ready to improve your Amazon operations, ads efficiency, or
-              product strategy? Let’s talk.
-            </p>
-          </div>
-
-          <div class="contact-wrap">
-            <div class="contact-copy">
-              <h3>Let’s grow your Amazon business.</h3>
-              <p>
-                Available for full-time store management, one-time audits, or
-                project-based consulting support tailored to your brand goals.
-              </p>
-              <a class="btn btn-primary" href="mailto:malik.usman.va@gmail.com">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
-                Send Email
-              </a>
+            <div class="section-header">
+                <h2>Get In Touch</h2>
             </div>
-
-            <div class="contact-list" aria-label="Contact information">
-              <div class="contact-item">
-                <i class="fas fa-envelope" aria-hidden="true"></i>
+            <div class="contact-container">
                 <div>
-                  <span class="contact-label">Email</span>
-                  <a href="mailto:malik.usman.va@gmail.com"
-                    >malik.usman.va@gmail.com</a
-                  >
+                    <h3 style="font-size: 1.4rem; margin-bottom: 15px;">Let's Grow Your Amazon Business</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 25px;">Available for full-time store management, one-time audit tasks, or project-based consulting.</p>
+                    <a href="mailto:malik.usman.va@gmail.com" class="btn"><i class="fas fa-envelope"></i> Send Email</a>
                 </div>
-              </div>
-
-              <div class="contact-item">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
                 <div>
-                  <span class="contact-label">WhatsApp</span>
-                  <a
-                    href="https://wa.me/923009685659"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >+92 3009685659</a
-                  >
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Email</span>
+                            <a href="mailto:malik.usman.va@gmail.com">malik.usman.va@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Phone / WhatsApp</span>
+                            <a href="https://wa.me/923009685659" target="_blank">+92 3009685659</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
       </section>
     </main>
 
-    <a
-      class="whatsapp-float"
-      href="https://wa.me/923009685659"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat on WhatsApp"
-    >
-      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <a href="https://wa.me/923009685659" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <footer>
@@ -1530,5 +606,6 @@
         <p>&copy; 2026 Malik M. Usman. All rights reserved.</p>
       </div>
     </footer>
-  </body>
+
+</body>
 </html>
