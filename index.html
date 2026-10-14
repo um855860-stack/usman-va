@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Malik M. Usman | Professional Amazon Virtual Assistant</title>
     <meta name="description" content="Practical Amazon store support for product research, listing optimization, PPC and Seller Central operations. Clear updates and thoughtful next steps for your business.">
     <meta name="theme-color" content="#0f172a">
@@ -28,8 +28,20 @@
 </head>
 <body>
 
-    <nav>
+    <nav class="site-nav">
         <div class="container nav-container">
+            <a href="#about" class="nav-brand" aria-label="Malik M. Usman homepage">
+                <span class="brand-avatar">MU</span>
+                <span class="brand-text">
+                    <span class="brand-name">Malik Usman</span>
+                    <span class="brand-tag">Amazon VA</span>
+                </span>
+            </a>
+
+            <div class="logo nav-slogan-wrap" aria-label="Rotating service slogans" aria-live="off">
+                <span class="nav-slogan">Smart growth. Steady support.</span>
+            </div>
+
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -38,22 +50,88 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="logo" aria-label="Rotating service slogans" aria-live="off">
-                <span class="nav-slogan">Smart growth. Steady support.</span>
+
+            <div class="nav-actions">
+                <a href="https://wa.me/923009685659" target="_blank" rel="noopener noreferrer" class="nav-cta-btn" data-haptic>
+                    <i class="fab fa-whatsapp"></i> <span>Let's talk</span>
+                </a>
+                <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <header class="hero-section" id="about">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-kicker">Amazon seller growth partner</span>
-                <h1>Malik M.<span class="hero-name-highlight">Usman.</span></h1>
-                <h2>Amazon Virtual Assistant & Growth Specialist</h2>
-                <p>Running an Amazon store means a lot of moving parts. I help with product research, listings, PPC and day-to-day tasks, so you can make clear decisions without juggling everything alone.</p>
-                <a href="https://wa.me/923009685659" target="_blank" rel="noopener noreferrer" class="btn" data-haptic data-tooltip="Open WhatsApp and start a conversation">
-                    <i class="fab fa-whatsapp"></i> Let’s talk
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+    <aside class="mobile-nav-menu" id="mobile-nav-menu" aria-hidden="true">
+        <div class="mobile-nav-inner">
+            <div class="mobile-nav-header">
+                <div class="mobile-brand">
+                    <span class="brand-avatar">MU</span>
+                    <div class="mobile-brand-meta">
+                        <strong>Malik M. Usman</strong>
+                        <span class="status-indicator"><span class="status-dot"></span> Available for work</span>
+                    </div>
+                </div>
+                <button type="button" class="mobile-nav-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="mobile-slogan-box">
+                <i class="fas fa-quote-left"></i>
+                <span class="mobile-slogan-text">Smart growth. Steady support.</span>
+            </div>
+
+            <ul class="mobile-nav-links">
+                <li><a href="#about" class="mobile-nav-link"><i class="fas fa-user-tie"></i> <span>About &amp; Overview</span> <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                <li><a href="#services" class="mobile-nav-link"><i class="fas fa-cubes"></i> <span>Core Services</span> <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                <li><a href="#service-detail" class="mobile-nav-link"><i class="fas fa-layer-group"></i> <span>Hands-on Support</span> <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                <li><a href="#process" class="mobile-nav-link"><i class="fas fa-route"></i> <span>Working Process</span> <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                <li><a href="#skills" class="mobile-nav-link"><i class="fas fa-toolbox"></i> <span>Tools &amp; Stack</span> <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                <li><a href="#faq" class="mobile-nav-link"><i class="fas fa-question-circle"></i> <span>Common Questions</span> <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+                <li><a href="#contact" class="mobile-nav-link"><i class="fas fa-envelope-open-text"></i> <span>Contact &amp; Inquiry</span> <i class="fas fa-chevron-right arrow-icon"></i></a></li>
+            </ul>
+
+            <div class="mobile-nav-footer">
+                <a href="https://wa.me/923009685659" target="_blank" rel="noopener noreferrer" class="btn btn-full btn-whatsapp-mobile" data-haptic>
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
+                <a href="mailto:malik.usman.va@gmail.com" class="mobile-email-link" data-haptic>
+                    <i class="fas fa-envelope"></i> malik.usman.va@gmail.com
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <header class="hero-section" id="about">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-kicker-wrapper">
+                    <span class="hero-kicker">
+                        <span class="status-dot"></span>
+                        Amazon seller growth partner
+                    </span>
+                </div>
+                <h1>Malik M.<span class="hero-name-highlight">Usman.</span></h1>
+                <h2>Amazon Virtual Assistant &amp; Growth Specialist</h2>
+                <p>Running an Amazon store means a lot of moving parts. I help with product research, listings, PPC and day-to-day tasks, so you can make clear decisions without juggling everything alone.</p>
+                <div class="hero-actions">
+                    <a href="https://wa.me/923009685659" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-haptic data-tooltip="Open WhatsApp and start a conversation">
+                        <i class="fab fa-whatsapp"></i> Let’s talk
+                    </a>
+                    <a href="#services" class="btn btn-secondary" data-haptic>
+                        <i class="fas fa-arrow-down"></i> Explore Services
+                    </a>
+                </div>
+                <div class="hero-trust-chips">
+                    <span class="trust-chip"><i class="fas fa-check"></i> Helium 10 &amp; JS</span>
+                    <span class="trust-chip"><i class="fas fa-check"></i> PPC Optimization</span>
+                    <span class="trust-chip"><i class="fas fa-check"></i> Seller Central</span>
+                </div>
             </div>
             <div class="profile-wrapper">
                 <div class="profile-frame">
@@ -70,6 +148,13 @@
                         class="profile-img"
                         draggable="false"
                     >
+                </div>
+                <div class="profile-badge-floating">
+                    <span class="badge-icon"><i class="fas fa-award"></i></span>
+                    <div class="badge-text">
+                        <strong>Amazon VA</strong>
+                        <span>Specialist</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -372,7 +457,9 @@
                         <label>Message <span class="required-mark">*</span>
                             <textarea name="message" placeholder="What’s happening with your store, and what would you like help with?" required></textarea>
                         </label>
-                        <button type="submit" class="btn" data-haptic data-tooltip="Open your email app with this message ready"><i class="fas fa-paper-plane"></i> Send Inquiry</button>
+                        <button type="submit" class="btn btn-primary btn-submit" data-haptic data-tooltip="Open your email app with this message ready">
+                            <i class="fas fa-paper-plane"></i> <span>Send Inquiry</span>
+                        </button>
                         <p class="form-note">Your email app will open with the message ready to send. I’ll reply personally.</p>
                         <p class="form-status" aria-live="polite"></p>
                     </form>
@@ -380,6 +467,11 @@
             </div>
         </div>
     </section>
+
+    <a href="https://wa.me/923009685659" target="_blank" rel="noopener noreferrer" class="mobile-floating-whatsapp" aria-label="Chat on WhatsApp" data-haptic>
+        <i class="fab fa-whatsapp"></i>
+        <span>Chat with Usman</span>
+    </a>
 
     <button type="button" class="scroll-top-button" aria-label="Back to top" title="Back to top" data-haptic data-tooltip="Back to top">
         <svg class="scroll-progress-ring" viewBox="0 0 64 64" aria-hidden="true">

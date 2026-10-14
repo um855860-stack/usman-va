@@ -53,12 +53,22 @@ scheduleScrollProgressUpdate();
 
 if (!prefersReducedMotion) {
     let sloganIndex = 0;
+    const mobileSlogan = document.querySelector('.mobile-slogan-text');
     window.setInterval(() => {
-        navSlogan.parentElement.classList.add('is-changing');
+        if (navSlogan && navSlogan.parentElement) {
+            navSlogan.parentElement.classList.add('is-changing');
+        }
         window.setTimeout(() => {
             sloganIndex = (sloganIndex + 1) % slogans.length;
-            navSlogan.textContent = slogans[sloganIndex];
-            navSlogan.parentElement.classList.remove('is-changing');
+            if (navSlogan) {
+                navSlogan.textContent = slogans[sloganIndex];
+            }
+            if (mobileSlogan) {
+                mobileSlogan.textContent = slogans[sloganIndex];
+            }
+            if (navSlogan && navSlogan.parentElement) {
+                navSlogan.parentElement.classList.remove('is-changing');
+            }
         }, 450);
     }, 4200);
 }
@@ -357,13 +367,35 @@ const loadHeroImages = async () => {
 
 loadHeroImages();
 
-hapticElements.forEach((element) => {
-    element.addEventListener('click', () => {
-        if ('vibrate' in navigator) {
-            navigator.vibrate(12);
-        }
-    });
+// Dynamic Ripple Effect & Touch Feedback on buttons
+document.addEventListener('pointerdown', (e) => {
+    const target = e.target.closest('.btn, .nav-cta-btn, .mobile-floating-whatsapp, .scroll-top-button, .mobile-nav-toggle, .mobile-nav-close');
+    if (!target) return;
+
+    if ('vibrate' in navigator) {
+        navigator.vibrate(12);
+    }
+
+    const rect = target.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'btn-ripple';
+
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    target.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 650);
 });
+
+// Form submission handler with visual button feedback
+const submitBtn = inquiryForm.querySelector('button[type="submit"]');
+const submitOriginalHTML = submitBtn ? submitBtn.innerHTML : '';
 
 inquiryForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -381,6 +413,84 @@ inquiryForm.addEventListener('submit', (event) => {
         formData.get('message')
     ].join('\n');
 
-    formStatus.textContent = 'Opening your email app...';
-    window.location.href = `mailto:malik.usman.va@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> <span>Opening Email Client...</span>';
+        if (formStatus) formStatus.textContent = 'Preparing your message...';
+
+        setTimeout(() => {
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> <span>Ready in Email App!</span>';
+            if (formStatus) formStatus.textContent = 'Your email client has opened. Send the message to connect!';
+            window.location.href = `mailto:malik.usman.va@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = submitOriginalHTML;
+            }, 3500);
+        }, 700);
+    } else {
+        window.location.href = `mailto:malik.usman.va@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+});
+
+// Mobile navigation drawer handling
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const mobileNavClose = document.querySelector('.mobile-nav-close');
+const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+const mobileNavBackdrop = document.querySelector('.mobile-nav-backdrop');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+const openMobileMenu = () => {
+    if (!mobileNavMenu) return;
+    mobileNavMenu.classList.add('is-open');
+    if (mobileNavBackdrop) mobileNavBackdrop.classList.add('is-open');
+    if (mobileNavToggle) {
+        mobileNavToggle.classList.add('is-active');
+        mobileNavToggle.setAttribute('aria-expanded', 'true');
+    }
+    mobileNavMenu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-locked');
+};
+
+const closeMobileMenu = () => {
+    if (!mobileNavMenu) return;
+    mobileNavMenu.classList.remove('is-open');
+    if (mobileNavBackdrop) mobileNavBackdrop.classList.remove('is-open');
+    if (mobileNavToggle) {
+        mobileNavToggle.classList.remove('is-active');
+        mobileNavToggle.setAttribute('aria-expanded', 'false');
+    }
+    mobileNavMenu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-locked');
+};
+
+if (mobileNavToggle) {
+    mobileNavToggle.addEventListener('click', () => {
+        const isOpen = mobileNavMenu.classList.contains('is-open');
+        if (isOpen) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    });
+}
+
+if (mobileNavClose) {
+    mobileNavClose.addEventListener('click', closeMobileMenu);
+}
+
+if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+}
+
+mobileNavLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+        closeMobileMenu();
+    });
+});
+
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileNavMenu && mobileNavMenu.classList.contains('is-open')) {
+        closeMobileMenu();
+    }
 });
