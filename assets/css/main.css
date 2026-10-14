@@ -256,49 +256,273 @@
             isolation: isolate;
             justify-self: center;
             padding: 18px;
+            animation: profileLevitate 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .profile-wrapper:hover {
+            animation-play-state: paused;
+            transform: translateY(-6px) scale(1.015) rotate(0.3deg);
         }
 
         .profile-wrapper::before {
             content: '';
             position: absolute;
-            inset: -34px;
+            inset: -32px;
             z-index: -2;
-            border-radius: 36%;
-            background: conic-gradient(from 45deg, rgba(255, 199, 93, 0.08), #ff7a18, rgba(255, 215, 137, 0.45), rgba(99, 102, 241, 0.22), rgba(255, 199, 93, 0.08));
-            filter: blur(26px);
-            opacity: 0.8;
-            animation: profileGlow 18s linear infinite;
+            border-radius: 44%;
+            background: conic-gradient(
+                from 30deg,
+                rgba(255, 153, 0, 0.42),
+                rgba(247, 185, 85, 0.15),
+                rgba(99, 102, 241, 0.35),
+                rgba(255, 153, 0, 0.5),
+                rgba(247, 185, 85, 0.2),
+                rgba(99, 102, 241, 0.32),
+                rgba(255, 153, 0, 0.42)
+            );
+            filter: blur(30px);
+            opacity: 0.75;
+            animation: profileAuraPulse 16s ease-in-out infinite alternate;
+            transition: opacity 0.5s ease, filter 0.5s ease, transform 0.5s ease;
+        }
+
+        .profile-wrapper:hover::before {
+            opacity: 0.95;
+            filter: blur(36px);
+            transform: scale(1.06);
         }
 
         .profile-wrapper::after {
             content: '';
             position: absolute;
-            inset: 5px;
+            inset: 6px;
             z-index: -1;
-            border: 1px solid rgba(255, 255, 255, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.26);
             border-radius: 34px;
-            transform: rotate(7deg);
+            transform: rotate(6.5deg);
             pointer-events: none;
+            transition: border-color 0.45s ease, transform 0.45s ease, box-shadow 0.45s ease;
+            animation: profileRingDrift 7s ease-in-out infinite;
+        }
+
+        .profile-wrapper:hover::after {
+            border-color: rgba(247, 185, 85, 0.55);
+            transform: rotate(8.5deg) scale(1.03);
+            box-shadow: 0 0 28px rgba(255, 153, 0, 0.22);
         }
 
         .profile-frame {
             position: relative;
+            --profile-corner-radius: 30px;
+            --profile-transition-duration: 680ms;
             width: clamp(250px, 27vw, 330px);
             height: clamp(270px, 40svh, 370px);
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.74);
-            border-radius: 30px;
+            border-radius: var(--profile-corner-radius);
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02));
-            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.52), 0 0 45px rgba(255, 153, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-            animation: profileFloat 6s ease-in-out infinite;
+            box-shadow:
+                0 30px 80px -15px rgba(0, 0, 0, 0.65),
+                0 0 50px -10px rgba(255, 153, 0, 0.25),
+                inset 0 1px 1px rgba(255, 255, 255, 0.45),
+                inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.45s ease;
+        }
+
+        .profile-wrapper:hover .profile-frame {
+            box-shadow:
+                0 36px 90px -10px rgba(0, 0, 0, 0.75),
+                0 0 65px -5px rgba(255, 153, 0, 0.38),
+                inset 0 1px 1px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Mechanical scan-line rider — full-height element, bright line at its top edge,
+           translates from y=-100% to y=+100% inside overflow:hidden so it sweeps the frame */
+        .profile-frame::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.96) 0px,
+                rgba(247, 185, 85, 0.82) 1.5px,
+                rgba(255, 153, 0, 0.38) 4px,
+                transparent 9px
+            );
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+
+        .profile-frame.is-transitioning::before {
+            animation: profileScanLine var(--profile-transition-duration) cubic-bezier(0.16, 0, 0.88, 1) both;
+        }
+
+        /* Shutter-click flash — brief warm pulse at the exact moment of cut */
+        .profile-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0);
+            opacity: 0;
+        }
+
+        .profile-frame.is-transitioning::after {
+            animation: profileFrameFlash var(--profile-transition-duration) ease both;
         }
 
         .profile-img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             display: block;
             object-fit: cover;
             object-position: center 35%;
+            opacity: 0;
+            border-radius: inherit;
+            will-change: clip-path, opacity, filter;
+        }
+
+        .profile-img.is-active {
+            z-index: 1;
+            opacity: 1;
+        }
+
+        /* Incoming: fully clipped — clip-path is the sole reveal mechanism, not opacity */
+        .profile-img.is-incoming {
+            z-index: 2;
+            opacity: 1;
+            clip-path: inset(0 0 100% 0 round var(--profile-corner-radius));
+        }
+
+        .profile-frame.is-transitioning .profile-img.is-incoming {
+            animation: profileShutterReveal var(--profile-transition-duration) cubic-bezier(0.16, 0, 0.88, 1) both;
+        }
+
+        /* Outgoing: overexposure flare then cuts to dark as the shutter sweeps past */
+        .profile-img.is-outgoing {
+            z-index: 1;
+            animation: profileShutterEject var(--profile-transition-duration) cubic-bezier(0.55, 0, 0.45, 1) both;
+        }
+
+        .profile-frame.is-paused .profile-img,
+        .profile-frame.is-paused::before,
+        .profile-frame.is-paused::after {
+            animation-play-state: paused;
+        }
+
+        /* ── Idle / ambient animations ──────────────────────────────── */
+
+        @keyframes profileLevitate {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(0.45deg); }
+        }
+
+        @keyframes profileAuraPulse {
+            0%   { transform: rotate(0deg)   scale(0.94); opacity: 0.65; filter: blur(28px); }
+            50%  { transform: rotate(180deg) scale(1.08); opacity: 0.88; filter: blur(36px); }
+            100% { transform: rotate(360deg) scale(0.96); opacity: 0.7;  filter: blur(30px); }
+        }
+
+        @keyframes profileRingDrift {
+            0%, 100% {
+                transform: rotate(6.5deg) translate(0, 0) scale(0.995);
+                border-color: rgba(255, 255, 255, 0.22);
+            }
+            50% {
+                transform: rotate(8.5deg) translate(2px, 3px) scale(1.015);
+                border-color: rgba(247, 185, 85, 0.42);
+                box-shadow: 0 0 25px rgba(255, 153, 0, 0.15);
+            }
+        }
+
+        /* ── Mechanical shutter keyframes ───────────────────────────── */
+
+        /* Scan-line: translateY(-100%) → translateY(+100%) inside overflow:hidden */
+        @keyframes profileScanLine {
+            0%   { opacity: 0.95; transform: translateY(-100%); }
+            4%   { opacity: 1; }
+            96%  { opacity: 0.9;  transform: translateY(100%); }
+            100% { opacity: 0;    transform: translateY(100%); }
+        }
+
+        /* Shutter-click flash: warm amber/white pulse at the leading edge */
+        @keyframes profileFrameFlash {
+            0%   { background: rgba(255, 255, 255, 0);    opacity: 0; }
+            5%   { background: rgba(255, 215, 120, 0.14); opacity: 1; }
+            18%  { background: rgba(255, 255, 255, 0);    opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* New image: clip-path reveals top-to-bottom with a brief brightness flare at the leading edge */
+        @keyframes profileShutterReveal {
+            0% {
+                clip-path: inset(0 0 100% 0 round var(--profile-corner-radius));
+                filter: brightness(1.45);
+            }
+            10% { filter: brightness(1.06); }
+            100% {
+                clip-path: inset(0 0 0% 0 round var(--profile-corner-radius));
+                filter: brightness(1);
+            }
+        }
+
+        /* Old image: overexposure flash then the shutter cuts it to black */
+        @keyframes profileShutterEject {
+            0%   { opacity: 1;    filter: brightness(1); }
+            12%  { opacity: 0.9;  filter: brightness(1.7); }
+            55%  { opacity: 0.25; filter: brightness(0.25); }
+            100% { opacity: 0;    filter: brightness(0); }
+        }
+
+        @keyframes profileImageFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .profile-wrapper {
+                animation: none !important;
+                transform: none !important;
+            }
+
+            .profile-wrapper::before,
+            .profile-wrapper::after {
+                animation: none !important;
+            }
+
+            .profile-frame {
+                --profile-transition-duration: 220ms;
+            }
+
+            .profile-frame::before,
+            .profile-frame::after {
+                display: none !important;
+            }
+
+            .profile-frame.is-transitioning .profile-img.is-incoming {
+                animation: profileImageFadeIn 220ms ease-in-out both !important;
+                clip-path: none !important;
+                filter: none !important;
+            }
+
+            .profile-img.is-incoming {
+                clip-path: none !important;
+                opacity: 0 !important;
+            }
+
+            .profile-img.is-outgoing {
+                animation: profileImageFadeIn 220ms ease-in-out reverse both !important;
+                filter: none !important;
+            }
         }
 
         .hero-section h1 {
@@ -1159,17 +1383,9 @@
             font-size: 0.9rem;
         }
 
-        @keyframes profileGlow {
-            0% { transform: rotate(0deg) scale(0.98); opacity: 0.58; }
-            25% { transform: rotate(90deg) scale(1.01); opacity: 0.82; }
-            50% { transform: rotate(180deg) scale(1.04); opacity: 0.92; }
-            75% { transform: rotate(270deg) scale(1.01); opacity: 0.8; }
-            100% { transform: rotate(360deg) scale(0.98); opacity: 0.58; }
-        }
-
-        @keyframes profileFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+        @keyframes profileLevitateMobile {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
         }
 
         @keyframes sectionRise {
@@ -1199,6 +1415,11 @@
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 scroll-behavior: auto !important;
+            }
+
+            .profile-frame.is-transitioning .profile-img.is-incoming,
+            .profile-img.is-outgoing {
+                animation-duration: 220ms !important;
             }
 
             .scroll-top-button,
@@ -1234,10 +1455,17 @@
             .profile-wrapper {
                 grid-row: 1;
                 padding: 6px;
+                animation-name: profileLevitateMobile;
+            }
+            .profile-wrapper:hover {
+                transform: translateY(-4px) scale(1.015);
             }
             .profile-frame {
                 width: clamp(92px, 26vw, 138px);
                 height: clamp(108px, 22svh, 146px);
+                --profile-corner-radius: 20px;
+                --profile-start-scale: 1.02;
+                --profile-end-scale: 1.01;
                 border-radius: 20px;
             }
             .profile-wrapper::after { border-radius: 24px; }
@@ -1306,7 +1534,7 @@
         @media (max-width: 640px) and (max-height: 590px) {
             .hero-section { padding-top: 66px; padding-bottom: 12px; }
             .hero-section .container { gap: 6px; }
-            .profile-frame { width: 76px; height: 86px; border-radius: 15px; }
+            .profile-frame { width: 76px; height: 86px; --profile-corner-radius: 15px; border-radius: 15px; }
             .hero-section h1 { font-size: 2.2rem; }
             .hero-section p { max-width: 42ch; font-size: 0.76rem; line-height: 1.4; }
             .hero-content .btn { min-height: 40px; padding: 8px 16px; }
@@ -1315,7 +1543,7 @@
         @media (max-width: 640px) and (max-height: 500px) {
             .hero-section { padding-top: 54px; padding-bottom: 8px; }
             .hero-section .container { gap: 4px; }
-            .profile-frame { width: 64px; height: 70px; border-radius: 13px; }
+            .profile-frame { width: 64px; height: 70px; --profile-corner-radius: 13px; border-radius: 13px; }
             .hero-kicker { margin-bottom: 4px; padding: 5px 8px; font-size: 0.56rem; }
             .hero-section h1 { margin-bottom: 5px; font-size: 1.9rem; }
             .hero-section h2 { margin-bottom: 4px; font-size: 0.88rem; }
